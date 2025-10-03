@@ -17,20 +17,13 @@ class GitCommands {
 
     // Command: git status
     public String status() {
-           java.util.LinkedHashSet<String> allFiles = new java.util.LinkedHashSet<>();
-    allFiles.addAll(this.staging);
-    allFiles.addAll(this.working_directory.new_changes);
-
-    int totalChanges = allFiles.size();
-
-    StringBuilder statusMessage = new StringBuilder();
-    statusMessage.append("You have ").append(totalChanges).append(" change/s.\n");
-
-    for (String file : allFiles) {
-        statusMessage.append(file).append("\n");
-    }
-
-    return statusMessage.toString();
+    StringBuilder sb = new StringBuilder();
+        int changesCount = this.working_directory.new_changes.size();
+        sb.append("You have ").append(changesCount).append(" change/s.\n");
+        for (String file : this.working_directory.new_changes) {
+            sb.append(file).append("\n");
+        }
+        return sb.toString();
     }
 
     // Command: git add <filename/file directory/wildcard>
