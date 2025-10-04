@@ -16,7 +16,6 @@ class GitCommands {
     }
 
     // Command: git status
-// Command: git status
 public String status() {
     // 1. Count how many changes we have in the working directory
     int changesCount = this.working_directory.new_changes.size();
