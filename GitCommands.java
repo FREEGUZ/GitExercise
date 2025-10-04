@@ -16,15 +16,20 @@ class GitCommands {
     }
 
     // Command: git status
-    public String status() {
-    StringBuilder sb = new StringBuilder();
-        int changesCount = this.working_directory.new_changes.size();
-        sb.append("You have ").append(changesCount).append(" change/s.\n");
-        for (String file : this.working_directory.new_changes) {
-            sb.append(file).append("\n");
-        }
-        return sb.toString();
+// Command: git status
+public String status() {
+    // 1. Count how many changes we have in the working directory
+    int changesCount = this.working_directory.new_changes.size();
+
+    // 2. Start with the first line of the status message
+    String result = "You have " + changesCount + " change/s.\n";
+
+    // 3. Add each file name from new_changes to the result string
+    for (String file : this.working_directory.new_changes) {
+        result = result + file + "\n";
     }
+    return result;
+}
 
     // Command: git add <filename/file directory/wildcard>
     public void add(String path_file) {
